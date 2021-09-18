@@ -11,6 +11,6 @@ with open("datas/live-log-json.json", mode="r") as file:
 @app.route("/")
 def index(): 
   return jsonify(liveLogJson)
-  
+
 # run server
-app.run()
+app.run(debug=True, port=5000)
