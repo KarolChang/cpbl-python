@@ -1,0 +1,5 @@
+找到api
+整理成json
+
+後端伺服器(Flask)
+路由回傳json格式
