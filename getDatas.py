@@ -26,14 +26,14 @@ with req.urlopen(request) as res:
   data = res.read().decode('utf-8')
 
 data = json.loads(data)
-BattingJson = data['BattingJson']
-CurtGameDetailJson = data['CurtGameDetailJson']
-FirstSnoJson = data['FirstSnoJson']
-GameDetailJson = data['GameDetailJson']
+# BattingJson = data['BattingJson']
+# CurtGameDetailJson = data['CurtGameDetailJson']
+# FirstSnoJson = data['FirstSnoJson']
+# GameDetailJson = data['GameDetailJson']
 LiveLogJson = data['LiveLogJson']
-PitchingJson = data['PitchingJson']
+# PitchingJson = data['PitchingJson']
 ScoreboardJson = data['ScoreboardJson']
-VideoJson = data['VideoJson']
+# VideoJson = data['VideoJson']
 
 # 寫入 json 檔案
 # with open("datas/curt-game-detail-json.json", mode="w") as file:
@@ -45,14 +45,14 @@ VideoJson = data['VideoJson']
 # with open("datas/game-detail-json.json", mode="w") as file:
 #   file.write(GameDetailJson)
 
-# with open("datas/live-log-json.json", mode="w") as file:
-#   file.write(LiveLogJson)
+with open("datas/live-log-json.json", mode="w") as file:
+  file.write(LiveLogJson)
 
 # with open("datas/pitching-json.json", mode="w") as file:
 #   file.write(PitchingJson)
 
-# with open("datas/scoreboard-json.json", mode="w") as file:
-#   file.write(ScoreboardJson)
+with open("datas/scoreboard-json.json", mode="w") as file:
+  file.write(ScoreboardJson)
 
 # with open("datas/video-json.json", mode="w") as file:
 #   file.write(VideoJson)
