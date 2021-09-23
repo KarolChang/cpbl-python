@@ -10,21 +10,48 @@
 </head>
 <body>
   <div class="container m-5">
-    <a href="/livelog">
-      <button class="btn btn-success mb-3">Live Log</button>
-    </a>
-    <br>
-    <a href="/scoreboard">
-      <button class="btn btn-info mb-3">Scoreboard</button>
-    </a>
-    <hr>
-    <a href="/livelog202">
-      <button class="btn btn-success mb-3">Live Log 202</button>
-    </a>
-    <br>
-    <a href="/scoreboard202">
-      <button class="btn btn-info mb-3">Scoreboard 202</button>
-    </a>
+    <form action="/" method="POST">
+      <!-- GameSno -->
+      <div class="form-group mb-3">
+        <label for="gameSno">GameSno</label>
+        <input type="number" id="gameSno" name="gameSno">
+      </div>
+      <!-- kindCode -->
+      <div class="form-group mb-3">
+        <label for="kindCode">KindCode</label>
+        <select id="kindCode" name="kindCode" class="form-control">
+          <option selected>A</option>
+          <option>B</option>
+          <option>C</option>
+          <option>D</option>
+        </select>
+      </div>
+      <!-- year -->
+      <div class="form-group mb-3">
+        <label for="year">Year</label>
+        <select id="year" name="year" class="form-control">
+          <option selected>2021</option>
+          <option>2020</option>
+          <option>2019</option>
+          <option>2018</option>
+        </select>
+      </div>
+      <div class="form-group mb-3">
+        <label for="dataType">DataType</label>
+        <select id="dataType" name="dataType" class="form-control">
+          <option>BattingJson</option>
+          <option>CurtGameDetailJson</option>
+          <option>FirstSnoJson</option>
+          <option>GameDetailJson</option>
+          <option selected>LiveLogJson</option>
+          <option>PitchingJson</option>
+          <option>ScoreboardJson</option>
+          <option>VideoJson</option>
+        </select>
+      </div>
+      <!-- submit button -->
+      <button type="submit" class="btn btn-success">查詢</button>
+    </form>  
   </div>
 
   <!-- bootstrap -->

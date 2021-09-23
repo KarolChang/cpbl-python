@@ -7,12 +7,14 @@ import urllib.request as req
 import urllib.parse as parse
 import json
 
-def fetchDatas(gamesno, kindcode, year, dataType):
-  url = "https://www.cpbl.com.tw/box/getlive"
+# url
+url = "https://www.cpbl.com.tw/box/getlive"
+
+def fetchDatas(gameSno, kindCode, year, dataType):
   postData = {
     "__RequestVerificationToken": "3NC86UWUiD6IRFc_9uJDrXL77k6m-Cbix_OI-iaapfu_sCxP90WGiKKFIJDW09ZjfdJCqtsOa3Jz-H1c0VuxjsKIfjI1",
-    "GameSno": gamesno,
-    "KindCode": kindcode,
+    "GameSno": gameSno,
+    "KindCode": kindCode,
     "Year": year
   }
 
@@ -25,11 +27,12 @@ def fetchDatas(gamesno, kindcode, year, dataType):
 
   with req.urlopen(request) as res:
     data = res.read().decode('utf-8')
-
+  
   data = json.loads(data)
-  jsonData = data[dataType]
+  data = data[dataType]
 
-  return jsonData
+  return data
+
 
 
 # 寫入 json 檔案
@@ -53,8 +56,6 @@ def fetchDatas(gamesno, kindcode, year, dataType):
 
 # with open("datas/video-json.json", mode="w") as file:
 #   file.write(VideoJson)
-
-
 
 
 # 所有的資料
