@@ -1,6 +1,4 @@
 def listScoreboard(data):
-  # return data[0]
-  print(data[0]['InningSeq'])
   if(data[0]['InningSeq'] <= 9):
     innings = 9
   else:
@@ -8,17 +6,15 @@ def listScoreboard(data):
 
   boardInfo = {
     '1': [''] * innings,
-    '2': [''] * innings
+    '2': [''] * innings,
+    'lastInning': data[0]['InningSeq'],
+    'lastInningHalf': data[0]['VisitingHomeType']
   }
   boardInfo['1'] += [0, 0, 0]
   boardInfo['2'] += [0, 0, 0]
   
   for item in data:
     # R, H, E
-    # print('len1', len(boardInfo[item['VisitingHomeType']]))
-    # print('len1 -t', type(len(boardInfo[item['VisitingHomeType']])))
-    # print('len2', len(boardInfo[item['VisitingHomeType']])-3)
-    # print('len2 -t', type(len(boardInfo[item['VisitingHomeType']])-3))
     boardInfo[item['VisitingHomeType']][len(boardInfo[item['VisitingHomeType']])-3] += item['ScoreCnt']
     boardInfo[item['VisitingHomeType']][len(boardInfo[item['VisitingHomeType']])-2] += item['HittingCnt']
     boardInfo[item['VisitingHomeType']][len(boardInfo[item['VisitingHomeType']])-1] += item['ErrorCnt']
