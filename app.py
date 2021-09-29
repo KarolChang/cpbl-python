@@ -2,6 +2,7 @@
 from flask import Flask, jsonify, render_template, redirect, url_for, request
 from flask_cors import CORS
 import api
+import listData
 import json
 
 app = Flask(__name__)
@@ -15,6 +16,8 @@ def index():
     kindCode = request.form["kindCode"]
     year = request.form["year"]
     dataType = request.form["dataType"]
+    # listScoreboard = request.form["listScoreboard"]
+    # print('listScoreboard1', listScoreboard)
 
     return redirect(url_for("record", gameSno=gameSno, kindCode=kindCode, year=year, dataType=dataType))
 
@@ -24,12 +27,18 @@ def index():
 
 @app.route("/record/<gameSno>/<kindCode>/<year>/<dataType>")
 def record(gameSno, kindCode, year, dataType): 
-  data = api.fetchDatas(gameSno, kindCode, year, dataType)
-  return {"data": json.loads(data)}
+  data = api.fetchDatas(gameSno, kindCode, year, dataType) 
+  data = json.loads(data)
 
-@app.route("/scoreboard")
-def scoreboard(): 
-  return jsonify(scoreboardJson)
+  if(dataType == 'ScoreboardJson'):
+    data = listData.listScoreboard(data)
+
+  return {"data": data}
+
+# @app.route("/scoreboard")
+# def scoreboard(gameSno, kindCode, year): 
+#   data = api.fetchDatas(gameSno, kindCode, year, 'ScoreboardJson')
+#   return {"data": json.loads(data)}
 
 # run server
 if __name__ == "__main__":
