@@ -19,17 +19,7 @@ def listScoreboard(data):
     boardInfo[item['VisitingHomeType']][len(boardInfo[item['VisitingHomeType']])-2] += item['HittingCnt']
     boardInfo[item['VisitingHomeType']][len(boardInfo[item['VisitingHomeType']])-1] += item['ErrorCnt']
 
-    # 如果最新一半局的分數是0 & '比賽中' 就先不要顯示
-    # if(index == 0 & item.ScoreCnt == 0 & this.gameInfo.gameStatus == '比賽中'):
-    #   return
-
     # Scores
     boardInfo[item['VisitingHomeType']][int(item['InningSeq']-1)] = item['ScoreCnt']
   
   return boardInfo
-
-# 如果最後一局不用打，score 改成 X
-# if(this.gameInfo.gameStatus == '比賽結束' && boardInfo['2'][boardInfo['2'].length-3] > boardInfo['1'][boardInfo['1'].length-3]) {
-#   boardInfo['2'][boardInfo['2'].length-4] = 'X'
-
-# this.boardInfo = boardInfo
