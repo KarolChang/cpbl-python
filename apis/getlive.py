@@ -12,7 +12,7 @@ url = "https://www.cpbl.com.tw/box/getlive"
 
 def fetchDatas(gameSno, kindCode, year, dataType):
   postData = {
-    "__RequestVerificationToken": "3NC86UWUiD6IRFc_9uJDrXL77k6m-Cbix_OI-iaapfu_sCxP90WGiKKFIJDW09ZjfdJCqtsOa3Jz-H1c0VuxjsKIfjI1",
+    # "__RequestVerificationToken": "3NC86UWUiD6IRFc_9uJDrXL77k6m-Cbix_OI-iaapfu_sCxP90WGiKKFIJDW09ZjfdJCqtsOa3Jz-H1c0VuxjsKIfjI1",
     "GameSno": gameSno,
     "KindCode": kindCode,
     "Year": year

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPBL API - Record</title>
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">CPBL中職速報</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/record">即時戰況</a>
+          <a class="nav-link" href="/schedule">賽程</a>
+          <a class="nav-link disabled">disabled</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container m-5" id="record">
+    <h1>Record</h1>
+    <form action="/record" method="POST" class="mb-3">
+      <!-- GameSno -->
+      <div class="form-group mb-3">
+        <label for="gameSno">GameSno</label>
+        <input type="number" id="gameSno" name="gameSno">
+      </div>
+      <!-- kindCode -->
+      <div class="form-group mb-3">
+        <label for="kindCode">KindCode</label>
+        <select id="kindCode" name="kindCode" class="form-control">
+          <option selected>A</option>
+          <option>B</option>
+          <option>C</option>
+          <option>D</option>
+        </select>
+      </div>
+      <!-- year -->
+      <div class="form-group mb-3">
+        <label for="year">Year</label>
+        <select id="year" name="year" class="form-control">
+          <option selected>2021</option>
+          <option>2020</option>
+          <option>2019</option>
+          <option>2018</option>
+        </select>
+      </div>
+      <!-- dataType -->
+      <div class="form-group mb-3">
+        <label for="dataType">DataType</label>
+        <select id="dataType" name="dataType" class="form-control">
+          <option>BattingJson</option>
+          <option>CurtGameDetailJson</option>
+          <option>FirstSnoJson</option>
+          <option>GameDetailJson</option>
+          <option selected>LiveLogJson</option>
+          <option>PitchingJson</option>
+          <option>ScoreboardJson</option>
+          <option>VideoJson</option>
+        </select>
+      </div>
+      <!-- list ScoreboardJson -->
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="listScoreboard" name="listScoreboard">
+        <label class="form-check-label" for="listScoreboard">
+          list ScoreboardJson ?
+        </label>
+      </div> -->
+      <!-- submit button -->
+      <button type="submit" class="btn btn-success">查詢</button>
+    </form>
+  </div>
+
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
