@@ -29,6 +29,26 @@
   <div class="container m-5" id="schedule">
     <h1>Schedule</h1>
     <form action="/schedule" method="POST" class="mb-3">
+      <!-- year -->
+      <div class="form-group mb-3">
+        <label for="year">Year</label>
+        <select id="year" name="year" class="form-control">
+          <option selected>2021</option>
+          <option>2020</option>
+          <option>2019</option>
+          <option>2018</option>
+        </select>
+      </div>
+      <!-- kindCode -->
+      <div class="form-group mb-3">
+        <label for="kindCode">kindCode</label>
+        <select id="kindCode" name="kindCode" class="form-control">
+          <option selected>A</option>
+          <option>B</option>
+          <option>C</option>
+          <option>D</option>
+        </select>
+      </div>
       <!-- submit button -->
       <button type="submit" class="btn btn-success">查詢</button>
     </form>

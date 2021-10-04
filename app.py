@@ -29,7 +29,10 @@ def recordIndex():
 @app.route("/schedule", methods=["POST", "GET"])
 def scheduleIndex(): 
   if request.method == "POST":
-    return redirect(url_for("schedule"))
+    year = request.form["year"]
+    kindCode = request.form["kindCode"]
+
+    return redirect(url_for("schedule", year=year, kindCode=kindCode))
 
   else:
     return render_template("schedule.html")
@@ -40,9 +43,9 @@ def record(gameSno, kindCode, year, dataType):
   data = json.loads(data)
   return {"data": data}
 
-@app.route("/schedule/gamedatas")
-def schedule(): 
-  data = apis.getschedule.fetchDatas()
+@app.route("/schedule/gamedatas/<kindCode>/<year>")
+def schedule(kindCode, year): 
+  data = apis.getschedule.fetchDatas(kindCode, year)
   data = json.loads(data)
   return {"data": data}
 
