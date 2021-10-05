@@ -45,7 +45,10 @@ def scheduleIndex():
 @app.route("/standings", methods=["POST", "GET"])
 def standingsIndex(): 
   if request.method == "POST":
-    return redirect(url_for("standings"))
+    kindCode = request.form["kindCode"]
+    seasonCode = request.form["seasonCode"]
+
+    return redirect(url_for("standings", kindCode=kindCode, seasonCode=seasonCode))
 
   else:
     return render_template("standings.html")
@@ -65,10 +68,9 @@ def schedule(kindCode, year):
   return {"data": data}
 
 # json data => standings
-@app.route("/standings/datas")
-def standings(): 
-  data = crawlers.standings.fetchDatas()
-  # data = json.loads(data)
+@app.route("/standings/<kindCode>/<seasonCode>")
+def standings(kindCode, seasonCode): 
+  data = crawlers.standings.fetchDatas(kindCode, seasonCode)
   return {"data": data}
 
 # run server

@@ -1,18 +1,33 @@
+# ssl
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
+
+# 連線取得 json 檔案
 import urllib.request as req
+import urllib.parse as parse
+import json
 import bs4
 
 url = "https://www.cpbl.com.tw/standings/season"
 
-def fetchDatas():
+def fetchDatas(kindCode, seasonCode):
+  postData = {
+    "__RequestVerificationToken": "BoQ9RGN38BmT5Ml2s--eOC_r4c9eLJ7UW9XwW-VnHx_tKY7YMJepojThV-ueI_SYvEvumOHKSz6GNzey3EErh1GoiCg1",
+    "Kindcode": "A",
+    "SeasonCode": 2
+  }
+
+  postDataString = parse.urlencode(postData)
+  postDataEncode = postDataString.encode('ascii') 
+
   request = req.Request(url, headers={
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36"
-  })
+  }, method='POST', data=postDataEncode)
+
   with req.urlopen(request) as res:
     data = res.read().decode("utf-8")
 
-  # 解析網頁原始碼 => 下載bs4 : pip3 install beautifulsoup4
+  # # 解析網頁原始碼 => 下載bs4 : pip3 install beautifulsoup4
   datas = [{}] * 5
 
   # rank
