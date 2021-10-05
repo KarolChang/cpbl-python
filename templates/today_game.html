@@ -29,26 +29,8 @@
   </nav>
 
   <div class="container m-5" id="standings">
-    <h1>Standings</h1>
-    <form action="/standings" method="POST" class="mb-3">
-      <!-- kindCode -->
-      <div class="form-group mb-3">
-        <label for="kindCode">kindCode</label>
-        <select id="kindCode" name="kindCode" class="form-control">
-          <option selected>A</option>
-          <option>B</option>
-          <option>C</option>
-          <option>D</option>
-        </select>
-      </div>
-      <!-- seasonCode -->
-      <div class="form-group mb-3">
-        <label for="seasonCode">Year</label>
-        <select id="seasonCode" name="seasonCode" class="form-control">
-          <option selected>2</option>
-          <option>1</option>
-        </select>
-      </div>
+    <h1>Today Games</h1>
+    <form action="/todaygame" method="POST" class="mb-3">
       <!-- submit button -->
       <button type="submit" class="btn btn-success">查詢</button>
     </form>
