@@ -52,9 +52,9 @@
     let month = today.getMonth() + 1
     month = month < 10 ? '0' + month : month
     let date = today.getDate()
-    data = date < 10 ? '0' + date : date
+    date = date < 10 ? '0' + date : date
 
-    document.getElementById('gameDate').value = `${year}-${month}-${data}`
+    document.getElementById('gameDate').value = `${year}-${month}-${date}`
   </script>    
 </body>
 </html>

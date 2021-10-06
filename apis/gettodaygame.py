@@ -29,5 +29,8 @@ def fetchDatas(gameDate):
 
   data = json.loads(data)
   data = data['GameADetailJson']
-
+  print(data)
+  if(data == None):
+    data = 'no game today'
+  
   return data
