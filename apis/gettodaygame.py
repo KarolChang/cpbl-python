@@ -10,13 +10,19 @@ import json
 # url
 url = "https://www.cpbl.com.tw/home/getdetaillist"
 
-def fetchDatas():
+def fetchDatas(gameDate):
+  postData = {
+    "GameDate": gameDate
+  }
+
+  postDataString = parse.urlencode(postData)
+  postDataEncode = postDataString.encode('ascii') 
 
   request = req.Request(url, headers={
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
     "RequestVerificationToken": "XKTE4BqMnSGXivhnltTrzzwz1dyQWCnBbfGb_5o3INWlFCfcGUrjx9XiXVm1DRt_mO16b9mDx9FVNiilzfUKpCqzLd41:E0WVOVgaW3ZZ4pik_mG9FHeBRxBtSlMmdjkvKhSo_iwDUOKiaeGUNidWmjhLlDgwHdYcHzOtGVgkFd63R3i_brvdEMs1",
     "X-Requested-With": "XMLHttpRequest"
-  }, method='POST')
+  }, method='POST', data=postDataEncode)
 
   with req.urlopen(request) as res:
     data = res.read().decode('utf-8')

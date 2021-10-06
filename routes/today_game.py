@@ -10,14 +10,17 @@ todaygame_blueprint = Blueprint('todaygame', __name__)
 @todaygame_blueprint.route("/todaygame", methods=["POST", "GET"])
 def todaygameIndex(): 
   if request.method == "POST":
-    return redirect(url_for("todaygame.todaygame"))
+    gameDate = request.form["gameDate"]
+    print('gameDate', gameDate)
+
+    return redirect(url_for("todaygame.todaygame", gameDate=gameDate))
 
   else:
     return render_template("today_game.html")
 
 # json
-@todaygame_blueprint.route("/todaygame/data")
-def todaygame(): 
-  data = apis.gettodaygame.fetchDatas()
+@todaygame_blueprint.route("/todaygame/<gameDate>")
+def todaygame(gameDate): 
+  data = apis.gettodaygame.fetchDatas(gameDate)
   data = json.loads(data)
   return {"data": data}
