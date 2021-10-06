@@ -12,6 +12,8 @@ def standingsIndex():
   if request.method == "POST":
     kindCode = request.form["kindCode"]
     seasonCode = request.form["seasonCode"]
+    if (kindCode == "") & (seasonCode == ""):
+      return redirect(url_for("standings.nowStandings"))
 
     return redirect(url_for("standings.standings", kindCode=kindCode, seasonCode=seasonCode))
 
@@ -22,4 +24,9 @@ def standingsIndex():
 @standings_blueprint.route("/standings/<kindCode>/<seasonCode>")
 def standings(kindCode, seasonCode): 
   data = crawlers.standings.fetchDatas(kindCode, seasonCode)
+  return {"data": data}
+
+@standings_blueprint.route("/standings/now")
+def nowStandings(): 
+  data = crawlers.standings.fetchDatas()
   return {"data": data}

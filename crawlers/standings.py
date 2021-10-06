@@ -10,19 +10,23 @@ import bs4
 
 url = "https://www.cpbl.com.tw/standings/season"
 
-def fetchDatas(kindCode, seasonCode):
-  postData = {
-    "__RequestVerificationToken": "BoQ9RGN38BmT5Ml2s--eOC_r4c9eLJ7UW9XwW-VnHx_tKY7YMJepojThV-ueI_SYvEvumOHKSz6GNzey3EErh1GoiCg1",
-    "Kindcode": "A",
-    "SeasonCode": 2
-  }
+def fetchDatas(kindCode=0, seasonCode=0):
+  if (kindCode == 0) & (seasonCode == 0):
+    request = req.Request(url, headers={
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36"
+    }, method='POST')
+  else:
+    postData = {
+      "Kindcode": kindCode,
+      "SeasonCode": seasonCode
+    }
 
-  postDataString = parse.urlencode(postData)
-  postDataEncode = postDataString.encode('ascii') 
+    postDataString = parse.urlencode(postData)
+    postDataEncode = postDataString.encode('ascii') 
 
-  request = req.Request(url, headers={
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36"
-  }, method='POST', data=postDataEncode)
+    request = req.Request(url, headers={
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36"
+    }, method='POST', data=postDataEncode)
 
   with req.urlopen(request) as res:
     data = res.read().decode("utf-8")
