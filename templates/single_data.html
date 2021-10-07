@@ -30,54 +30,8 @@
   </nav>
   
   <div class="container m-5" id="record">
-    <h1>Record</h1>
-    <form action="/record" method="POST" class="mb-3">
-      <!-- GameSno -->
-      <div class="form-group mb-3">
-        <label for="gameSno">GameSno</label>
-        <input type="number" id="gameSno" name="gameSno">
-      </div>
-      <!-- kindCode -->
-      <div class="form-group mb-3">
-        <label for="kindCode">KindCode</label>
-        <select id="kindCode" name="kindCode" class="form-control">
-          <option selected>A</option>
-          <option>B</option>
-          <option>C</option>
-          <option>D</option>
-        </select>
-      </div>
-      <!-- year -->
-      <div class="form-group mb-3">
-        <label for="year">Year</label>
-        <select id="year" name="year" class="form-control">
-          <option selected>2021</option>
-          <option>2020</option>
-          <option>2019</option>
-          <option>2018</option>
-        </select>
-      </div>
-      <!-- dataType -->
-      <div class="form-group mb-3">
-        <label for="dataType">DataType</label>
-        <select id="dataType" name="dataType" class="form-control">
-          <option>BattingJson</option>
-          <option>CurtGameDetailJson</option>
-          <option>FirstSnoJson</option>
-          <option>GameDetailJson</option>
-          <option selected>LiveLogJson</option>
-          <option>PitchingJson</option>
-          <option>ScoreboardJson</option>
-          <option>VideoJson</option>
-        </select>
-      </div>
-      <!-- list ScoreboardJson -->
-      <!-- <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="listScoreboard" name="listScoreboard">
-        <label class="form-check-label" for="listScoreboard">
-          list ScoreboardJson ?
-        </label>
-      </div> -->
+    <h1>Single Data</h1>
+    <form action="/singledata" method="POST" class="mb-3">
       <!-- submit button -->
       <button type="submit" class="btn btn-success">查詢</button>
     </form>

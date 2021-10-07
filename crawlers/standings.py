@@ -31,7 +31,7 @@ def fetchDatas(kindCode=0, seasonCode=0):
   with req.urlopen(request) as res:
     data = res.read().decode("utf-8")
 
-  # # 解析網頁原始碼 => 下載bs4 : pip3 install beautifulsoup4
+  # 解析網頁原始碼 => 下載bs4 : pip3 install beautifulsoup4
   datas = [{}] * 5
 
   # rank
