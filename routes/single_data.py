@@ -19,5 +19,4 @@ def singledataIndex():
 @singledata_blueprint.route("/singledata/data")
 def singledata(): 
   data = crawlers.singledata.fetchDatas()
-  print('data', data)
   return {"data": data}
