@@ -26,6 +26,6 @@ def fetchDatas():
   players = root.find_all("dd", class_="")
   for player in players:
     id = player.a.get("href")[18:]
-    obj[id] = player.a.string
+    obj[player.a.string] = id
   
   return obj
