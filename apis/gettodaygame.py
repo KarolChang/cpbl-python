@@ -10,10 +10,10 @@ import json
 # url
 url = "https://www.cpbl.com.tw/home/getdetaillist"
 
-def fetchDatas(gameDate, kindCode):
+def fetchDatas(gameDate):
   postData = {
     "GameDate": gameDate,
-    "KindCode": kindCode
+    # "KindCode": kindCode
   }
 
   postDataString = parse.urlencode(postData)
@@ -27,12 +27,6 @@ def fetchDatas(gameDate, kindCode):
 
   with req.urlopen(request) as res:
     data = res.read().decode('utf-8')
-
-  data = json.loads(data)
-  if kindCode == "A":
-    data = data['GameADetailJson']
-  elif kindCode == "D":
-    data = data['GameDDetailJson']
 
   if data == None:
     data = "0"
