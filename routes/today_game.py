@@ -11,7 +11,6 @@ todaygame_blueprint = Blueprint('todaygame', __name__)
 def todaygameIndex(): 
   if request.method == "POST":
     gameDate = request.form["gameDate"]
-    # kindCode = request.form["kindCode"]
 
     return redirect(url_for("todaygame.todaygame", gameDate=gameDate))
 

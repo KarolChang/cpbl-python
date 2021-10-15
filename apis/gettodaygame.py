@@ -12,8 +12,7 @@ url = "https://www.cpbl.com.tw/home/getdetaillist"
 
 def fetchDatas(gameDate):
   postData = {
-    "GameDate": gameDate,
-    # "KindCode": kindCode
+    "GameDate": gameDate
   }
 
   postDataString = parse.urlencode(postData)
