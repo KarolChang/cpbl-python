@@ -22,8 +22,11 @@ def todaygameIndex():
 def todaygame(gameDate): 
   data = apis.gettodaygame.fetchDatas(gameDate)
   data = json.loads(data)
-  dataA = json.loads(data["GameADetailJson"])
-  dataD = json.loads(data["GameDDetailJson"])
+
+  dataA = json.loads(data["GameADetailJson"]) if data["GameADetailJson"] else data["GameADetailJson"]
+
+  dataD = json.loads(data["GameDDetailJson"]) if data["GameDDetailJson"] else data["GameDDetailJson"]
+
   return {"data": {
     "一軍": dataA,
     "二軍": dataD
