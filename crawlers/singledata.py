@@ -33,7 +33,15 @@ def fetchDatas():
 
   # action & actionEn & firstImg
   actions = root.find_all("div", class_="title")
-  images = root.find_all("a", { "href": "" })
+  aTags = root.find_all("a")
+  images = []
+
+  for aTag in aTags:
+    if aTag.get("style"):
+      images.append(aTag)
+
+  # print('images', images, len(images))
+  # print('actions', actions, len(actions))
 
   for action, image in zip(actions, images):
     obj = {
@@ -48,7 +56,7 @@ def fetchDatas():
   players = root.find_all("div", class_="player")
   numbers = root.find_all("div", class_="num")
   index = 0
-
+  print('arr', arr)
   for player, number in zip(players, numbers):
     obj = {
       "name": player.find("a", class_="name").string,
