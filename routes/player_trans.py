@@ -13,7 +13,7 @@ def playersIndex():
     return redirect(url_for("playertrans.playertrans"))
 
   else:
-    return render_template("playertrans.html")
+    return render_template("playerTrans.html")
   
 # json
 @playertrans_blueprint.route("/playertrans/data")
