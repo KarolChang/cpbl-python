@@ -8,16 +8,17 @@ playertrans_blueprint = Blueprint('playertrans', __name__)
 
 # form page
 @playertrans_blueprint.route("/playertrans", methods=["POST", "GET"])
-def playersIndex(): 
+def playertransIndex():
   if request.method == "POST":
-    return redirect(url_for("playertrans.playertrans"))
+    year = request.form["year"]
+    month = request.form["month"]
+    return redirect(url_for("playertrans.playertrans", year=year, month=month))
 
   else:
     return render_template("playerTrans.html")
   
 # json
-@playertrans_blueprint.route("/playertrans/data")
-def playertrans(): 
-  data = crawlers.playertrans.fetchDatas()
+@playertrans_blueprint.route("/playertrans/<year>/<month>")
+def playertrans(year, month): 
+  data = crawlers.playertrans.fetchDatas(year, month)
   return data
-  # return {"data": data}

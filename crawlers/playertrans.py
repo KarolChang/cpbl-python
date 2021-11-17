@@ -11,10 +11,18 @@ import bs4
 # url
 url = "https://www.cpbl.com.tw/player/trans"
 
-def fetchDatas():
+def fetchDatas(year, month):
+  postData = {
+    "Year": year,
+    "Month": month
+  }
+
+  postDataString = parse.urlencode(postData)
+  postDataEncode = postDataString.encode('ascii') 
+
   request = req.Request(url, headers={
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36"
-  })
+  }, method='POST', data=postDataEncode)
 
   with req.urlopen(request) as res:
     data = res.read().decode('utf-8')
