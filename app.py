@@ -1,32 +1,28 @@
-# 使用 flask
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_cors import CORS
+from routes.index import register_route
+from errors.error_handle import handle_error
 
-from routes.record import record_blueprint
-from routes.schedule import schedule_blueprint
-from routes.standings import standings_blueprint
-from routes.today_game import todaygame_blueprint
-from routes.single_data import singledata_blueprint
-from routes.players import players_blueprint
-from routes.player_trans import playertrans_blueprint
 
 app = Flask(__name__)
+app.config["DEBUG"] = True
 CORS(app)
 
-# 路由
-# index
+
+# route
 @app.route("/")
 def index():
-  return render_template("index.html")
+    return render_template("index.html")
 
-app.register_blueprint(record_blueprint)
-app.register_blueprint(schedule_blueprint)
-app.register_blueprint(standings_blueprint)
-app.register_blueprint(todaygame_blueprint)
-app.register_blueprint(singledata_blueprint)
-app.register_blueprint(players_blueprint)
-app.register_blueprint(playertrans_blueprint)
+
+# error handling
+# @app.errorhandler(Exception)
+# def error_handler(error):
+#     return handle_error(error)
+
+
+register_route(app)
 
 # run server
 if __name__ == "__main__":
-  app.run()
+    app.run()

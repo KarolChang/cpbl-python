@@ -1,5 +1,0 @@
-Flask
-flask_cors
-bs4
-gunicorn
-pip==24.0
