@@ -1,6 +1,7 @@
 # Ignore Python bytecode files
 *.py[cod]
 **/__pycache__/
+/.pytest_cache
 
 # Ignore virtual environments
 venv/
