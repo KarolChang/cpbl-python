@@ -5,23 +5,21 @@
 import requests
 
 # 連線取得 json 檔案
-import urllib.request as req
-import urllib.parse as parse
-import json
+# import urllib.request as req
+# import urllib.parse as parse
+# import json
 
 # url
 url = "https://www.cpbl.com.tw/home/getdetaillist"
 
 
 def fetchDatas(gameDate):
-    #     postData = {
-    #     "GameDate": gameDate
-    #   }
+    postData = {"GameDate": gameDate}
 
     headers = {
         "User-Agent": "/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
     }
-    response = requests.post(url, headers=headers)
+    response = requests.post(url, headers=headers, json=postData)
 
     print("Response Text:")
     print(response.text)
@@ -47,7 +45,7 @@ def fetchDatas(gameDate):
     #   with req.urlopen(request) as res:
     #     data = res.read().decode('utf-8')
 
-    if data == None:
-        data = "0"
+    # if data == None:
+    #     data = "0"
 
-    return data
+    # return data
