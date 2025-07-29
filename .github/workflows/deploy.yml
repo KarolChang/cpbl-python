@@ -1,0 +1,53 @@
+name: Deploy to Google Cloud Functions
+
+on:
+  push:
+    branches:
+      - gcp   # 支援 gcp 分支
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Enable required APIs
+        run: |
+          gcloud services enable cloudfunctions.googleapis.com
+          gcloud services enable cloudbuild.googleapis.com
+
+      - name: Deploy to Cloud Functions
+        run: |
+          gcloud functions deploy cpbl-api \
+            --gen2 \
+            --runtime python312 \
+            --source . \
+            --entry-point cpbl_api \
+            --trigger-http \
+            --allow-unauthenticated \
+            --region asia-east1 \
+            --memory 512MB \
+            --timeout 60s
+        env:
+          GOOGLE_CLOUD_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Get Function URL
+        run: |
+          echo "Function deployed successfully!"
+          gcloud functions describe cpbl-api --region=asia-east1 --format="value(serviceConfig.uri)"
