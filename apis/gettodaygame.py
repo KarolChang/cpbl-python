@@ -17,7 +17,10 @@ def fetchDatas(gameDate):
     postData = {"GameDate": gameDate}
 
     headers = {
-        "User-Agent": "/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "Referer": "https://www.cpbl.com.tw/",
+        "Origin": "https://www.cpbl.com.tw",
+        "Content-Type": "application/json",
     }
     response = requests.post(url, headers=headers, json=postData)
 
